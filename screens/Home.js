@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 
-const Home = () => {
-  const [inputVal, setInputVal] = useState('')
+const Home = (props) => {
 
   return (
     <View>
       <Text style={styles.header}>Home</Text>
       <TextInput
         style={styles.textInput}
-        onChangeText={text => setInputVal(text)}
-        value={inputVal}
+        onChangeText={text => props.setInputVal(text)}
+        value={props.inputVal}
       />
     </View>
   );
