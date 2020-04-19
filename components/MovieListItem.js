@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 const MovieListItem = (props) => {
   const onSelectMovie = () => {
     props.setSelectedMovie(props.movie);
-    props.navigation.navigate('Info');
+    props.navigation.navigate('Info', { movie: props.movie });
   }
 
   return (

@@ -24,9 +24,11 @@ export default function App() {
         <Stack.Screen name='Home'>
           {props => <Home {...props} inputVal={inputVal} setInputVal={setInputVal} movieList={movieList} setSelectedMovie={setSelectedMovie} />}
         </Stack.Screen>
-        <Stack.Screen name='Info'>
-          {props => <MovieInfo {...props} movie={selectedMovie} />}
-        </Stack.Screen>
+        <Stack.Screen
+          name='Info'
+          component={MovieInfo}
+          options={{ title: selectedMovie.Title }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
