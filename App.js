@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, FlatList, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { search } from './mockData';
 import Home from './screens/Home';
-import MovieListItem from './components/MovieListItem';
 
 export default function App() {
   const [inputVal, setInputVal] = useState('');
@@ -15,12 +14,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Home inputVal={inputVal} setInputVal={setInputVal} />
-      <FlatList
-        data={movieList}
-        renderItem={({ item }, index) => <MovieListItem movie={item} selectMovie={setSelectedMovie} key={index} />}
-        keyExtractor={item => item.imdbID}
-      />
+    <Home inputVal={inputVal} setInputVal={setInputVal} movieList={movieList} setSelectedMovie={setSelectedMovie} />
     </View>
   );
 };

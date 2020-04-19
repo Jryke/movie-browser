@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { StyleSheet, FlatList, View, Text, TextInput } from 'react-native';
+import MovieListItem from '../components/MovieListItem';
 
 const Home = (props) => {
-
   return (
     <View>
       <Text style={styles.header}>Home</Text>
@@ -11,6 +11,11 @@ const Home = (props) => {
         onChangeText={text => props.setInputVal(text)}
         value={props.inputVal}
       />
+      <FlatList
+        data={props.movieList}
+        renderItem={({ item }) => <MovieListItem movie={item} selectMovie={props.setSelectedMovie} />}
+        keyExtractor={item => item.imdbID}
+      />
     </View>
   );
 };
@@ -18,7 +23,7 @@ const Home = (props) => {
 const styles = StyleSheet.create({
   header: {
     fontSize: 24,
-    fontWeight: 500,
+    fontWeight: '500',
     textAlign: 'center',
     marginBottom: 10,
   },
