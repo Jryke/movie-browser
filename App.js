@@ -20,7 +20,15 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator 
+        initialRouteName='Home'
+        screenOptions={{
+          headerTitleAlign:'center',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      >
         <Stack.Screen name='Home'>
           {props => <Home {...props} inputVal={inputVal} setInputVal={setInputVal} movieList={movieList} setSelectedMovie={setSelectedMovie} />}
         </Stack.Screen>
