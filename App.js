@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
 import { search } from './mockData';
 import Home from './screens/Home';
 
@@ -13,9 +15,11 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-    <Home inputVal={inputVal} setInputVal={setInputVal} movieList={movieList} setSelectedMovie={setSelectedMovie} />
-    </View>
+    <NavigationContainer>
+      <View style={styles.container}>
+      <Home inputVal={inputVal} setInputVal={setInputVal} movieList={movieList} setSelectedMovie={setSelectedMovie} />
+      </View>
+    </NavigationContainer>
   );
 };
 
