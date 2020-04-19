@@ -4,7 +4,7 @@ import MovieListItem from '../components/MovieListItem';
 
 const Home = (props) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.header}>Home</Text>
       <TextInput
         style={styles.textInput}
@@ -13,7 +13,9 @@ const Home = (props) => {
       />
       <FlatList
         data={props.movieList}
-        renderItem={({ item }) => <MovieListItem movie={item} selectMovie={props.setSelectedMovie} />}
+        renderItem={({ item }) => (
+          <MovieListItem movie={item} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} />
+        )}
         keyExtractor={item => item.imdbID}
       />
     </View>
@@ -21,6 +23,12 @@ const Home = (props) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   header: {
     fontSize: 24,
     fontWeight: '500',
