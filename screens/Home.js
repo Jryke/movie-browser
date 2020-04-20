@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, FlatList, View, Text, TextInput } from 'react-native';
+import PropTypes from 'prop-types';
 import MovieListItem from '../components/MovieListItem';
 
 const Home = (props) => {
@@ -43,5 +44,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
 })
+
+Home.propTypes = {
+  setInputVal: PropTypes.func.isRequired,
+  setSelectedMovie: PropTypes.func.isRequired,
+  movieList: PropTypes.arrayOf(PropTypes.object)
+}
 
 export default Home;
