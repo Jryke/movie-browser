@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, FlatList, View, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
+import { fetchMovies } from '../api';
 import MovieListItem from '../components/MovieListItem';
 
 const Home = (props) => {
+  const [fetchedMovieList, setFetchedMovieList] = useState()
+  
+  useEffect(() => {
+    getMovieList()
+  }, [props.inputVal])
+
+  const getMovieList = async () => {
+    const results = await fetchMovies(props.inputVal)
+    setFetchedMovieList(results)
+  }
+  
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Home</Text>
@@ -13,7 +25,7 @@ const Home = (props) => {
         value={props.inputVal}
       />
       <FlatList
-        data={props.movieList}
+        data={fetchedMovieList}
         renderItem={({ item }) => (
           <MovieListItem movie={item} setSelectedMovie={props.setSelectedMovie} navigation={props.navigation} />
         )}
