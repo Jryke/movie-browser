@@ -13,7 +13,7 @@ const Home = (props) => {
   }, [inputVal])
 
   const getMovieList = async () => {
-    const results = await fetchMovies(inputVal)
+    const results = await fetchMovies(inputVal.trim())
     setFetchedMovieList(results)
   }
   
