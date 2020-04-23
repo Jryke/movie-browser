@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, FlatList, View, Text, TextInput } from 'react-native';
+import { StyleSheet, FlatList, View, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import { fetchMovies } from '../api';
 import MovieListItem from '../components/MovieListItem';
@@ -18,11 +18,11 @@ const Home = (props) => {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Home</Text>
       <TextInput
         style={styles.textInput}
         onChangeText={text => props.setInputVal(text)}
         value={props.inputVal}
+        placeholder='enter movie name'
       />
       <FlatList
         data={fetchedMovieList}
@@ -42,25 +42,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    fontSize: 24,
-    fontWeight: '500',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
   textInput: {
     width: 300,
     height: 30,
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 4,
+    marginTop: 30
   },
 })
 
 Home.propTypes = {
+  inputVal: PropTypes.string,
   setInputVal: PropTypes.func.isRequired,
   setSelectedMovie: PropTypes.func.isRequired,
-  movieList: PropTypes.arrayOf(PropTypes.object)
+  movieList: PropTypes.arrayOf(PropTypes.object),
+  navigation: PropTypes.objectOf(PropTypes.func)
 }
 
 export default Home;
