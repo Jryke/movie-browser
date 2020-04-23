@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 const MovieListItem = (props) => {
   const onSelectMovie = () => {
@@ -26,5 +27,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 })
+
+MovieListItem.propTypes = {
+  movie: PropTypes.objectOf(PropTypes.string),
+  setSelectedMovie: PropTypes.func,
+  navigation: PropTypes.objectOf(PropTypes.func)
+}
 
 export default MovieListItem;
