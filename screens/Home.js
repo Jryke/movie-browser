@@ -5,14 +5,15 @@ import { fetchMovies } from '../api';
 import MovieListItem from '../components/MovieListItem';
 
 const Home = (props) => {
+  const [inputVal, setInputVal] = useState('');
   const [fetchedMovieList, setFetchedMovieList] = useState()
   
   useEffect(() => {
     getMovieList()
-  }, [props.inputVal])
+  }, [inputVal])
 
   const getMovieList = async () => {
-    const results = await fetchMovies(props.inputVal)
+    const results = await fetchMovies(inputVal)
     setFetchedMovieList(results)
   }
   
@@ -20,8 +21,8 @@ const Home = (props) => {
     <View style={styles.container}>
       <TextInput
         style={styles.textInput}
-        onChangeText={text => props.setInputVal(text)}
-        value={props.inputVal}
+        onChangeText={text => setInputVal(text)}
+        value={inputVal}
         placeholder='enter movie name'
       />
       <FlatList
@@ -53,8 +54,6 @@ const styles = StyleSheet.create({
 })
 
 Home.propTypes = {
-  inputVal: PropTypes.string,
-  setInputVal: PropTypes.func.isRequired,
   setSelectedMovie: PropTypes.func.isRequired,
   movieList: PropTypes.arrayOf(PropTypes.object),
   navigation: PropTypes.objectOf(PropTypes.func)

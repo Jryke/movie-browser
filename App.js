@@ -8,7 +8,6 @@ import MovieInfo from './screens/MovieInfo';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [inputVal, setInputVal] = useState('');
   const [selectedMovie, setSelectedMovie] = useState({});
 
   return (
@@ -23,7 +22,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name='Home'>
-          {props => <Home {...props} inputVal={inputVal} setInputVal={setInputVal} setSelectedMovie={setSelectedMovie} />}
+          {props => <Home {...props} setSelectedMovie={setSelectedMovie} />}
         </Stack.Screen>
         <Stack.Screen
           name='Info'
@@ -33,4 +32,4 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
