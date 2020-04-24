@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Image, ActivityIndicator } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Image, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import { fetchMovieInfo } from '../api';
 
@@ -21,7 +21,7 @@ const MovieInfo = ({ route }) => {
 
   if (!movieDetails) return <MovieLoadingScreen />
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image style={styles.poster} source={{url: movieDetails.Poster}} />
       <View style={styles.row}>
         <Text style={styles.title}>{movieDetails.Title}</Text>
@@ -35,7 +35,7 @@ const MovieInfo = ({ route }) => {
           <Text style={styles.row} key={i}>{rating.Source}: {rating.Value}</Text>
         ))
       }
-    </View>
+    </ScrollView>
   );
 };
 
@@ -46,13 +46,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    margin: 20,
   },
   poster: {
     width: 300,
     height: 450,
+    alignSelf: 'center'
   },
   row: {
     alignItems: 'center',
