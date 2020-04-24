@@ -1,11 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { getRatingNumber } from '../utils';
 
 const RatingListItem = (props) => {
+  const ratingNumber = getRatingNumber(props.rating)
+
   return (
     <View style={styles.container}>
       <Text>{props.rating.Source}: {props.rating.Value}</Text>
+      <View style={styles.ratingVisualBox}>
+        <View style={{flex: ratingNumber, backgroundColor: 'green'}} />
+        <View style={{flex: 100 - ratingNumber}} />
+      </View>
     </View>
   )
 }
