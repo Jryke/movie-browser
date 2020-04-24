@@ -3,6 +3,7 @@ import { StyleSheet, ScrollView, View, Text, Image, ActivityIndicator } from 're
 import PropTypes from 'prop-types';
 import RatingListItem from '../components/RatingListItem';
 import { fetchMovieInfo } from '../api';
+import { actorStringToArray } from '../utils';
 
 const MovieLoadingScreen = () => {
   return (
@@ -27,19 +28,24 @@ const MovieInfo = ({ route }) => {
 
   useEffect(() => {
     fetchMovieInfo(movieId).then(res => setMovieDetails(res))
-  }, [movieId])
+  }, [movieId])  
 
   if (!movieDetails) return <MovieLoadingScreen />
+  console.log('actors', movieDetails.Actors)
+  // actorStringToArray(movieDetails.Actors)
   return (
     <ScrollView style={styles.container}>
       {renderPoster(movieDetails.Poster)}
       <View style={styles.row}>
         <Text style={styles.title}>{movieDetails.Title}</Text>
         <Text>({movieDetails.Year})</Text>
+        <Text>{movieDetails.Type}</Text>
+        <Text>{movieDetails.Rated}, {movieDetails.Runtime}</Text>
       </View>
       <View style={styles.row}>
         <Text>{movieDetails.Plot}</Text>
       </View>
+      <Text style={styles.row}>{movieDetails.Actors}</Text>
       {
         movieDetails.Ratings.map((rating, i) => (
           <RatingListItem rating={rating} key={i}/>
