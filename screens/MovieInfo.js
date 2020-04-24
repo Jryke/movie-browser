@@ -23,7 +23,7 @@ const MovieInfo = ({ route }) => {
   if (!movieDetails) return <MovieLoadingScreen />
   return (
     <ScrollView style={styles.container}>
-      <Image style={styles.poster} source={{url: movieDetails.Poster}} />
+      <Image style={styles.poster} source={{uri: movieDetails.Poster}} />
       <View style={styles.row}>
         <Text style={styles.title}>{movieDetails.Title}</Text>
         <Text>({movieDetails.Year})</Text>
