@@ -4,13 +4,20 @@ import PropTypes from 'prop-types';
 import { getRatingNumber } from '../utils';
 
 const RatingListItem = (props) => {
+
   const ratingNumber = getRatingNumber(props.rating)
+  
+  const getColor = () => {
+    if (ratingNumber > 75) return 'green'
+    if (ratingNumber > 50) return 'yellow'
+    return 'red'
+  }
 
   return (
     <View style={styles.container}>
       <Text>{props.rating.Source}: {props.rating.Value}</Text>
       <View style={styles.ratingVisualBox}>
-        <View style={{flex: ratingNumber, backgroundColor: 'green'}} />
+        <View style={{flex: ratingNumber, backgroundColor: getColor()}} />
         <View style={{flex: 100 - ratingNumber}} />
       </View>
     </View>
