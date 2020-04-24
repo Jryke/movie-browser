@@ -12,6 +12,15 @@ const MovieLoadingScreen = () => {
   )
 }
 
+const renderPoster = (uri) => {
+  if (uri !== 'N/A') return <Image style={styles.poster} source={{uri: uri}} />
+  return (
+    <View style={styles.noPosterImg}>
+      <Text>No Movie Poster Available</Text>
+    </View>
+  )
+}
+
 const MovieInfo = ({ route }) => {
   const movieId = route.params.movie.imdbID;
   const [movieDetails, setMovieDetails] = useState();
@@ -23,7 +32,7 @@ const MovieInfo = ({ route }) => {
   if (!movieDetails) return <MovieLoadingScreen />
   return (
     <ScrollView style={styles.container}>
-      <Image style={styles.poster} source={{uri: movieDetails.Poster}} />
+      {renderPoster(movieDetails.Poster)}
       <View style={styles.row}>
         <Text style={styles.title}>{movieDetails.Title}</Text>
         <Text>({movieDetails.Year})</Text>
@@ -53,6 +62,15 @@ const styles = StyleSheet.create({
     width: 300,
     height: 450,
     alignSelf: 'center'
+  },
+  noPosterImg: {
+    width: 300,
+    height: 450,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: 'black',
+    borderWidth: 1,
   },
   row: {
     alignItems: 'center',
