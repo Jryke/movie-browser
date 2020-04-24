@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, View, Text, Image, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
+import RatingListItem from '../components/RatingListItem';
 import { fetchMovieInfo } from '../api';
 
 const MovieLoadingScreen = () => {
@@ -32,7 +33,7 @@ const MovieInfo = ({ route }) => {
       </View>
       {
         movieDetails.Ratings.map((rating, i) => (
-          <Text style={styles.row} key={i}>{rating.Source}: {rating.Value}</Text>
+          <RatingListItem rating={rating} key={i}/>
         ))
       }
     </ScrollView>
