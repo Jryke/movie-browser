@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Home from './screens/Home';
-import MovieInfo from './screens/MovieInfo';
+import React, { useState } from 'react'
+import 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import Home from './screens/Home'
+import MovieInfo from './screens/MovieInfo'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 export default function App() {
-  const [selectedMovie, setSelectedMovie] = useState({});
+  const [selectedMovie, setSelectedMovie] = useState({})
 
   return (
     <NavigationContainer>
-      <Stack.Navigator 
+      <Stack.Navigator
         initialRouteName='Home'
         screenOptions={{
-          headerTitleAlign:'center',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
@@ -31,5 +31,5 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }

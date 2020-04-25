@@ -1,4 +1,4 @@
-const BASE_URL = 'http://www.omdbapi.com/?apikey=744db6a4';
+const BASE_URL = 'http://www.omdbapi.com/?apikey=744db6a4'
 
 const deserializeResponse = response => {
   if (!response.ok) throw new Error('Error fetching your request')
@@ -6,7 +6,7 @@ const deserializeResponse = response => {
   return response.json()
 }
 
-export const fetchMovies = async (input) => {
+export const fetchMovies = async input => {
   const searchURL = `${BASE_URL}&r=json&s=${input}`
   const response = await fetch(searchURL)
   const result = await deserializeResponse(response)
@@ -14,7 +14,7 @@ export const fetchMovies = async (input) => {
   return result.Search
 }
 
-export const fetchMovieInfo = async (id) => {
+export const fetchMovieInfo = async id => {
   const searchURL = `${BASE_URL}&i=${id}`
   const response = await fetch(searchURL)
   const result = await deserializeResponse(response)
